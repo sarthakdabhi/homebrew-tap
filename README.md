@@ -24,9 +24,23 @@ Replace the example filenames or URL with your own source. Plancast creates audi
 
 Node is bundled. Setup downloads managed Python, uv, FFmpeg, llama.cpp, model weights, and speech assets. The default dialogue model is about 9.3 GB, with additional space needed for speech and dependencies. No separate Node, Python, Ollama, or LM Studio installation is needed.
 
-Fetching a URL contacts its website. Extracted content stays on your Mac with local generation. OpenAI is an explicit alternative with a disclosure and charges to your API account.
+Fetching a URL contacts its website. Extracted content stays on your Mac with local generation. OpenAI and Google Gemini are explicit alternatives with a disclosure and charges to your API account.
 
 Scanned/password-protected PDFs, Word documents, saved HTML, and remote PDF URLs are not supported. Download a text-based PDF before passing it to Plancast. Login-protected, paywalled, and JavaScript-only articles may not extract.
+
+## Cloud providers
+
+Plancast 0.3.0 also supports OpenAI and Gemini for both dialogue and speech. No local model setup is required for cloud mode.
+
+```sh
+export GEMINI_API_KEY="your-api-key"
+plancast article.txt --provider gemini --play
+
+export OPENAI_API_KEY="your-api-key"
+plancast article.txt --provider openai --play
+```
+
+Cloud modes send source content and dialogue to the selected provider after confirmation, with applicable API usage charged to your account. Gemini uses Kore/Puck voices; its TTS is a preview service, and live Gemini generation has not yet been verified in this project. See the [Gemini setup guide](https://github.com/sarthakdabhi/plancast#use-google-gemini).
 
 ## Update or uninstall
 

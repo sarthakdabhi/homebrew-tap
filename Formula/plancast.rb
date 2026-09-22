@@ -1,8 +1,8 @@
 class Plancast < Formula
   desc "Turn documents and articles into local two-host audio briefings"
   homepage "https://sarthakdabhi.github.io/plancast/"
-  url "https://github.com/sarthakdabhi/plancast/releases/download/v0.2.0/plancast-0.2.0-macos-arm64.tar.gz"
-  sha256 "0f4e16b4d4f8a67986ec3ce66e378a1ebc799af59dfe1c388081f9ce7447e650"
+  url "https://github.com/sarthakdabhi/plancast/releases/download/v0.3.0/plancast-0.3.0-macos-arm64.tar.gz"
+  sha256 "8f523bedab25edf163998d7294de138f6a6042821e0202cefb3dee48be59174c"
   license "MIT"
 
   depends_on arch: :arm64
@@ -25,6 +25,7 @@ class Plancast < Formula
     assert_match version.to_s, shell_output("#{bin}/plancast --version")
     (testpath/"article.txt").write "A report describes a small study and its limitations.\n"
     assert_match '"sourceKind": "text"', shell_output("#{bin}/plancast #{testpath}/article.txt --dry-run")
+    assert_match '"provider": "gemini"', shell_output("#{bin}/plancast #{testpath}/article.txt --provider gemini --dry-run")
     (testpath/"plan.md").write "# Plan\nShip a small feature. Next action: test the prototype.\n"
     assert_match '"status": "dry_run"', shell_output("#{bin}/plancast #{testpath}/plan.md --dry-run")
   end
