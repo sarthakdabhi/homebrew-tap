@@ -36,6 +36,18 @@ Fetching a URL contacts its website. Extracted content stays on your Mac with lo
 
 Scanned/password-protected PDFs, Word documents, saved HTML, and remote PDF URLs are not supported. Download a text-based PDF before passing it to Plancast. Login-protected, paywalled, and JavaScript-only articles may not extract.
 
+## Conversation framing
+
+Plancast 0.5.0 follows the source content by default. A Markdown article is discussed as an article, and a text file can contain a plan. Host questions are tailored to the source evidence; next actions are included only when supported.
+
+```sh
+plancast article.md --play
+plancast report.pdf --framing document --play
+plancast roadmap.txt --framing plan --play
+```
+
+The explicit framing options change the focus without permitting invented facts. Source references and structured checks cannot guarantee semantic accuracy; verify important details against the original source.
+
 ## Cloud providers
 
 Plancast 0.3.0 also supports OpenAI and Gemini for both dialogue and speech. No local model setup is required for cloud mode.

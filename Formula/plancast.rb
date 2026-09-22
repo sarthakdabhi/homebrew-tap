@@ -1,8 +1,8 @@
 class Plancast < Formula
   desc "Turn documents and articles into local two-host audio briefings"
   homepage "https://sarthakdabhi.github.io/plancast/"
-  url "https://github.com/sarthakdabhi/plancast/releases/download/v0.4.0/plancast-0.4.0-macos-arm64.tar.gz"
-  sha256 "298ac736a5158e41b3f35c595ecd80c4c08be39780bc9ed0ce942e4dd931a048"
+  url "https://github.com/sarthakdabhi/plancast/releases/download/v0.5.0/plancast-0.5.0-macos-arm64.tar.gz"
+  sha256 "59563fbb06cb4a260afeb4e43bff303f75a8144fb3cae05e7aec69c9109aa2fd"
   license "MIT"
 
   depends_on arch: :arm64
@@ -30,6 +30,8 @@ class Plancast < Formula
     assert_match '"sourceKind": "text"', shell_output("#{bin}/plancast #{testpath}/article.txt --dry-run")
     assert_match '"provider": "gemini"', shell_output("#{bin}/plancast #{testpath}/article.txt --provider gemini --dry-run")
     (testpath/"plan.md").write "# Plan\nShip a small feature. Next action: test the prototype.\n"
-    assert_match '"status": "dry_run"', shell_output("#{bin}/plancast #{testpath}/plan.md --dry-run")
+    assert_match '"framing": "auto"', shell_output("#{bin}/plancast #{testpath}/plan.md --dry-run")
+    assert_match '"framing": "document"', shell_output("#{bin}/plancast #{testpath}/plan.md --framing document --dry-run")
+    assert_match '"framing": "plan"', shell_output("#{bin}/plancast #{testpath}/article.txt --framing plan --dry-run")
   end
 end
