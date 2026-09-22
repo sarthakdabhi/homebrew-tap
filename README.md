@@ -11,6 +11,14 @@ brew install sarthakdabhi/tap/plancast
 plancast setup-local
 ```
 
+To select directly without a prompt:
+
+```sh
+plancast setup-local --model qwen3:8b
+```
+
+For automation, pass `--model` or `--yes`. `PLANCAST_LOCAL_SCRIPT_MODEL` overrides the saved model during generation.
+
 ## Choose your source
 
 ```sh
@@ -22,7 +30,7 @@ plancast "https://example.com/article" --play
 
 Replace the example filenames or URL with your own source. Plancast creates audio, a transcript, and a JSON sidecar, then opens a local browser player with pause, seeking, and speed controls. Only two-minute generation is currently supported.
 
-Node is bundled. Setup downloads managed Python, uv, FFmpeg, llama.cpp, model weights, and speech assets. The default dialogue model is about 9.3 GB, with additional space needed for speech and dependencies. No separate Node, Python, Ollama, or LM Studio installation is needed.
+Node is bundled. Setup downloads managed Python, uv, FFmpeg, llama.cpp, model weights, and speech assets. Setup lets you choose Qwen3 4B (2.5 GB), 8B (5.0 GB), or 14B (9.3 GB), and saves your choice for future runs. Additional space is needed for speech and dependencies. Smaller models remain unbenchmarked. No separate Node, Python, Ollama, or LM Studio installation is needed.
 
 Fetching a URL contacts its website. Extracted content stays on your Mac with local generation. OpenAI and Google Gemini are explicit alternatives with a disclosure and charges to your API account.
 
